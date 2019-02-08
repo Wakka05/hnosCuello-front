@@ -1,0 +1,42 @@
+@import '../../../styles/colors.less';
+@import '../../../styles/sizes.less';
+
+@width-logo: 20%;
+@height-phone: 18px;
+
+@padding-header: 6px;
+
+.content-header {
+    // background-image: linear-gradient(#ff8c00, #ffd700);
+    background-image: url('../../../assets/images/header_example.jpg');
+    background-position: center;
+    .content-phone {
+        float: right;
+        margin-right: 10px;
+        margin-top: 5px;
+        height: @height-phone;
+    }
+    
+    .content-desktop {
+        display:inline-flex;
+        width: 100%;
+        height: @Height-Header-Desktop - (@padding-header * 2);
+        padding: 0 0 (@height-phone + 5px) 0;
+    
+        .logo_header {
+            cursor: pointer;
+            display:inline-flex;
+            width: @width-logo;
+    /*
+            media query para width: logo tamaño movil*/
+    
+            .image_header {
+                width: 100%;
+                background-image: url('../../../assets/images/logo_example.jpg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+            }
+        }
+    }
+}
