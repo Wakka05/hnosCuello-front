@@ -13,7 +13,7 @@ export class HeaderDesktopComponent implements OnInit {
   ngOnInit() {
   }
 
-  private goHome() {
+  goHome() {
     this.router.navigateByUrl('/');
   }
 }
