@@ -1,2 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './styles/sizes.less';
+@import './styles/colors.less';
+
+/* PAGE STRUCTURE */
+.page-structure {
+    background-color: #f8f8f8;
+    .generate-padding-page(@top-bottom, @left-right);
+}
+
+/* SI POR EJEMPLO QUEREMOS PAGINAS CON MENU, HABRIA QUE HACER OTRO APARTE CON DIFERENTE PADDING */
+
+/* MIN HEIGHT */
+header-desktop ~ * {
+    @media (min-width: 699px) {
+        top: @Height-Header-Desktop;
+        width: 100%;
+
+        .top-header {
+            padding-top: @Height-Header-Desktop;
+        }
+    }
+    .min-height-page {
+        @media (min-width: 699px) {
+            &.page-structure {
+                .generate-min-height-page(@Height-Header-Desktop, @Height-Footer, @top-bottom);
+            }
+        }
+
+        /* TODO: CON MENU
+        &.page-structure-with-menu {
+            .generate-min-height-page(@Height-Header-Desktop, @Height-Footer, @top-bottom-menu);
+        }*/
+    }
+
+    @media (max-width: 699px) {
+        .generate-min-height-page(@Height-Header-Mobile, 0px, (@top-bottom * 0.6));
+    }
+}
