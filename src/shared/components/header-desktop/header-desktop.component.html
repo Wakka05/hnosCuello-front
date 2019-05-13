@@ -2,10 +2,31 @@
   <div class="content-phone">{{ 'header-phone' | translate }}</div>
   <div class="content-desktop">
     <div class="logo_header">
-      <div class="image_header" (click)="goHome()"></div>
+      <div class="image-header" (click)="goHome()"></div>
     </div>
     <div class="search">
       <search-bar></search-bar>
     </div>
+    <!-- User menu -->
+    <div class="menu-button-user">
+      <button mat-button [matMenuTriggerFor]="menuUser" (menuOpened)="isOpened()" (menuClosed)="isClosed">
+        <div class="profile">
+          <div class="name">User name</div>
+          <div class="user-image">
+            <img alt="" *ngIf="user?.picture" [src]="user.picture.content | base64"/>
+            <div *ngIf="!user?.picture" class="user-icon"></div>
+          </div>
+          <span class="fa fa-angle-down"></span>
+        </div>
+      </button>
+    </div>
+    <mat-menu #menuUser="matMenu" class="menu-user">
+      <button mat-menu-item>Prueba 1</button>
+      <button mat-menu-item>Prueba 1</button>
+      <button mat-menu-item>Prueba 1</button>
+      <button mat-menu-item (click)="logout()" style="height: 44px;">Log out
+        <span class="image"></span>
+      </button>
+    </mat-menu>
   </div>
 </div>
