@@ -7,12 +7,15 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'hnosCuello-front';
 
   constructor(
     private translate: TranslateService
   ) {
     this.translate.setDefaultLang('es');
     this.translate.use('es');
+  }
+
+  onActivate(event): void {
+    window.scroll(0, 0);
   }
 }
