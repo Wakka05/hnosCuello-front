@@ -21,6 +21,7 @@ import { SearchBarComponent } from '../shared/components/search-bar/search-bar.c
 import { HomePage } from '../pages/home-page/home-page.component';
 import { ComponentCardComponent } from '../shared/components/component-card/component-card.component';
 import { Base64Pipe } from '../shared/pipes/base64.pipe';
+import { FooterComponent } from '../shared/components/footer/footer.component';
 
 //Function to create the loader for translations
 export function createTranslateLoader(http: HttpClient) {
@@ -54,7 +55,8 @@ export class MaterialModule { }
     SearchBarComponent,
     ComponentCardComponent,
     HomePage,
-    Base64Pipe
+    Base64Pipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
