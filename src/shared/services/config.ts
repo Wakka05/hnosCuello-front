@@ -1,6 +1,8 @@
 export const config = {
     users: '/users',
-    logged: 'logged'
+    logged: '/logged',
+    product: '/products',
+    category: '/categories'
 } 
 
 export const TOKEN_STORAGE_NAME: string = 'token';

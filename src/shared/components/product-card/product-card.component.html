@@ -1,0 +1,28 @@
+<div class="card" (click)="goToProduct()">
+    <div class="img-card">
+      <img src="../../../assets/images/header_example.jpg" alt="">
+    </div>
+    <div class="summary">
+      <div class="title-card">
+        <span>
+          Aw mama
+        </span>
+      </div>
+      <div class="price-card">
+        <span>
+          0,69 €
+        </span>
+      </div>
+      <!-- TODO: Esto es de component-detail
+        <div class="add-item-card">
+        <mat-icon>remove_circle</mat-icon>
+        <input id="article-quantity" type="text">
+        <mat-icon>add_circle</mat-icon>
+      </div>-->
+      <div class="rating-card">
+        <rating [valueRating]="3"></rating>
+      </div>
+      <!--<button mat-button class="add-button">Añadir</button>-->
+    </div>
+  </div>
+  

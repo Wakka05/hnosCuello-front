@@ -1,0 +1,9 @@
+<div class="container">
+  <span 
+    *ngFor="let item of rangeValue; let i=index"
+    class="fa padding"
+    [ngClass]="{'checked fa-star': item,
+                'fa-star-half-o': haveDecimals(i),
+                'fa-star-o': !item}"
+    (click)="selected(i)"></span>
+</div>

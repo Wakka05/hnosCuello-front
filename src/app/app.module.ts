@@ -19,9 +19,11 @@ import { MatInputModule,
 import { HeaderDesktopComponent } from '../shared/components/header-desktop/header-desktop.component';
 import { SearchBarComponent } from '../shared/components/search-bar/search-bar.component';
 import { HomePage } from '../pages/home-page/home-page.component';
-import { ComponentCardComponent } from '../shared/components/component-card/component-card.component';
+import { ProductCardComponent } from '../shared/components/product-card/product-card.component';
 import { Base64Pipe } from '../shared/pipes/base64.pipe';
 import { FooterComponent } from '../shared/components/footer/footer.component';
+import { RatingComponent } from '../shared/components/rating/rating.component';
+import { BreadcrumbComponent } from '../shared/components/breadcrumb/breadcrumb.component';
 
 //Function to create the loader for translations
 export function createTranslateLoader(http: HttpClient) {
@@ -53,10 +55,12 @@ export class MaterialModule { }
     AppComponent,
     HeaderDesktopComponent,
     SearchBarComponent,
-    ComponentCardComponent,
+    ProductCardComponent,
     HomePage,
     Base64Pipe,
-    FooterComponent
+    FooterComponent,
+    RatingComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,

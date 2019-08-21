@@ -1,4 +1,17 @@
 <div class="content page-structure min-height-page">
-  <component-card></component-card>
+  <div class="container-cards">
+    <!--<div *ngFor="let category of categoryService.getCategories() | async" class="category-section">
+      <div class="title">{{ category.title }}</div>
+      <div class="card" *ngFor="let product of productService.getProducts(category.id, null, 8, null) | async">
+        <product-card [product]="product"></product-card>
+      </div>
+    </div>-->
+    <div class="card"><!-- Let card of cards...-->
+      <product-card></product-card>
+    </div>
+    <div class="card"><!-- Let card of cards...-->
+      <product-card></product-card>
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>

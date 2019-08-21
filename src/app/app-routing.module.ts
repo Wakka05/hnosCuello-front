@@ -6,7 +6,12 @@ import { HomePage } from '../pages/home-page/home-page.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomePage
+    pathMatch: 'full',
+    component: HomePage,
+    data: { bc: 'Home'},
+    /*children: [
+
+    ]*/
   }
 ];
 

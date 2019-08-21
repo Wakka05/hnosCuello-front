@@ -3,7 +3,21 @@
 @import './styles/sizes.less';
 @import './styles/colors.less';
 
+@font-face {
+    font-family: 'Heebo-regular';
+    src: url('./assets/fonts/Heebo-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Heebo-medium';
+    src: url('./assets/fonts/Heebo-Medium.ttf');
+}
+
 html {
+
+    * {
+        font-family: 'Heebo-regular', 'arial', sans-serif;
+    }
     
     body {
         min-width: 100%;

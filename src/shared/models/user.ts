@@ -1,6 +1,6 @@
 // User model
 export interface User {
-    id?: string;
+    id: string;
     name: string;
     picture?: Picture;
     roles: string[];
