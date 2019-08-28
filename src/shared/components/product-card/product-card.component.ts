@@ -15,11 +15,11 @@ export class ProductCardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    
+    console.log(this.product);
   }
 
   private goToProduct(): void {
-    this.router.navigate(['category', this.product.idCategory, this.product.name]);
+    //this.router.navigate(['category', this.product.idCategory, this.product.name]);
   }
 
 }

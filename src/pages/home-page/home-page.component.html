@@ -7,10 +7,10 @@
       </div>
     </div>-->
     <div class="card"><!-- Let card of cards...-->
-      <product-card></product-card>
+      <product-card [product]="products[0]" (click)="goToProduct(products[0])"></product-card>
     </div>
     <div class="card"><!-- Let card of cards...-->
-      <product-card></product-card>
+      <product-card [product]="products[1]" (click)="goToProduct(products[1])"></product-card>
     </div>
   </div>
 </div>
