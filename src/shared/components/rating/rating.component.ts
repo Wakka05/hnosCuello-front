@@ -12,7 +12,7 @@ export class RatingComponent implements OnInit, OnChanges {
   @Input() control: FormControl;
   @Input() numRange: number = 5;
   // Init value
-  @Input() valueRating: number = 0;
+  @Input() valueRating: number = 4;
 
   constructor() { }
 

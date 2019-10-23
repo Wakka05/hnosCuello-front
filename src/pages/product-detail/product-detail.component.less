@@ -1,0 +1,146 @@
+.container-detail {
+    display: flex;
+    justify-content: center;
+
+    .main-image {
+        margin-right: 40px;
+        //background-image: url(../../assets/images/logo_example.jpg);
+        //background-size: cover;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .right {
+
+        width: 35%;
+        border-radius: 10px;
+        padding-bottom: 10px;
+
+        .options {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: white;
+            text-align: center;
+
+            button {
+                
+            }
+            
+        }
+
+        .features {
+            background-color: white;
+            margin-bottom: 10px;
+
+            div {
+                padding-left: 25px;
+                margin-bottom: 10px;
+            }
+    
+            ::ng-deep rating {
+    
+                .container {
+                    padding-left: 25px;
+                    margin-bottom: 10px;
+                }
+            }
+    
+            .title {
+                margin-top: 10px;
+                font-size: 36px;
+            }
+    
+            .price {
+                font-size: 36px;
+                font-weight: bold;
+                color: orange;
+            }
+    
+            .quantity {
+                display: flex;
+                align-items: center;
+    
+                span {
+                    padding-right: 20px;
+                }
+                button {
+                    width: 40px; // +2 padding left/right
+                    height: 40px; // +3 padding top/bottom
+                    cursor: pointer;
+                }
+    
+                form {
+    
+                    ::ng-deep mat-form-field {
+                        width: 40px;
+                        height: 38px;
+                        border: 1px solid black;
+    
+                        .mat-form-field-wrapper {
+                            height: 38px;
+                        }
+    
+                        .mat-form-field-underline {
+                            display: none;
+                        }
+    
+                        .mat-form-field-infix {
+                            //border-top: 1px solid black;
+                            display: flex;
+                            justify-items: center;
+                            padding-top: 0;
+                            padding-bottom: 0;
+                            border: 0;
+                            height: 38px;
+    
+                            .mat-input-element {
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .favorite-container {
+                padding-right: 20px;
+                padding-bottom: 10px;
+                display: flex;
+                .favorite {
+                    color: gray;
+                    vertical-align: middle;
+                    cursor: pointer;
+                    &.filled {
+                        color: red;
+                    }
+                    &:hover {
+                        font-size: 26px;
+                    }
+                }
+                .favorite-text {
+                    font-size: 14px;
+                    display: flex;
+                    align-items: center;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    @media (max-width: 699px) {
+                        display: none;
+                    }
+                }
+            }
+        }   
+    }
+
+    
+}

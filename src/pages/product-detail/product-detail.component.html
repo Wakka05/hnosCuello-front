@@ -1,3 +1,38 @@
-<p>
-  product-detail works!
-</p>
+<div class="content page-structure min-height-page">
+  <div class="container-detail">
+    <div class="main-image">
+      <img src="https://www.recetasderechupete.com/wp-content/uploads/2018/01/Pan-casero-f%C3%A1cil-525x360.jpg"/>
+    </div>
+    <div class="right">
+      <div class="features">
+        <div class="title">
+          <span>Barra de leña</span>
+        </div>
+        <div class="price-feature">
+          <span class="price">0,65€</span>
+        </div>
+        <!--<rating [valueRating]="product.rating"></rating>-->
+        <rating></rating>
+        <div class="quantity">
+          <span>Cantidad: </span>
+          <button (click)="removeProduct($event)"><mat-icon>remove</mat-icon></button>
+          <form [formGroup]="detailForm">
+            <mat-form-field>
+              <input matInput formControlName="quantity"/>
+            </mat-form-field>
+          </form>
+          <button (click)="addProduct($event)"><mat-icon>add</mat-icon></button>
+        </div>
+        <div class="favorite-container" (click)="favorite($event)">
+          <mat-icon class="favorite">favorite</mat-icon>
+          <span class="favorite-text"> Añadir a favoritos </span>
+        </div>
+      </div>
+      <div class="options">
+        <button class="mat-flat-button mat-primary">Prueba</button>
+        <button class="mat-flat-button mat-primary">Prueba</button>
+      </div>
+    </div> 
+  </div>
+</div>
+<app-footer></app-footer>

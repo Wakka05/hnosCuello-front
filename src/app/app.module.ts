@@ -25,6 +25,7 @@ import { FooterComponent } from '../shared/components/footer/footer.component';
 import { RatingComponent } from '../shared/components/rating/rating.component';
 import { BreadcrumbComponent } from '../shared/components/breadcrumb/breadcrumb.component';
 import { ProductDetailComponent } from '../pages/product-detail/product-detail.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 //Function to create the loader for translations
 export function createTranslateLoader(http: HttpClient) {
@@ -76,7 +77,9 @@ export class MaterialModule { }
     }),
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     /**

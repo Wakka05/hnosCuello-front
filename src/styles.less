@@ -61,4 +61,29 @@ header-desktop ~ * {
     @media (max-width: 699px) {
         .generate-min-height-page(@Height-Header-Mobile, 0px, (@top-bottom * 0.6));
     }
+
+    // BUTTON STYLES //
+    .button,
+    .mat-flat-button.mat-primary {
+        cursor: pointer;
+        color: white;
+        background-color: orange;
+        box-shadow: 0.2px 4px 0 rgba(0, 0, 0, 0.14);
+        text-transform: uppercase;
+        text-align: center;
+        justify-content: center;
+        font-weight: bold;
+        height: @button-medium;
+        &[disabled] {
+            color: white !important;
+            background-color: #dbdbdb !important;
+            cursor: default;
+        }
+
+        ::ng-deep .mat-button-wrapper {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
 }
