@@ -14,7 +14,7 @@ export const PRE_BACK_DOMAIN: string = 'pre-back-domain';
 export const PRO_BACK_DOMAIN: string = 'pro-back-domain';*/
 
 /*ENDPOINT*/
-export const END_POINT_DEV: string = 'http://localhost:8080';
+export const END_POINT_DEV: string = 'http://localhost:3000';
 export const END_POINT_PRE: string = '';
 export const END_POINT_PRO: string = '';
 

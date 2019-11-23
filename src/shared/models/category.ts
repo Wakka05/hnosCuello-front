@@ -1,6 +1,6 @@
 // Category model
 export interface Category {
-    id: string;
+    _id: string;
     name: string;
     title: string;
 }

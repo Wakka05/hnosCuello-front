@@ -19,20 +19,20 @@ export class ProductService {
     private credentialsService: CredentialsService,
     private configService: ConfigService
   ) { 
-    this.endPoint = this.configService.getConfig();
+    this.endPoint = this.configService.getConfig().API.END_POINT;
   }
 
-  public getProducts(idCategory: string, orderField?: string, size?: number, page?: number): Observable<any> {
-    let path = `${this.endPoint}${config.product}?idCategory=${idCategory}`;
+  public getProducts(idCategory: string, orderField?: string, size?: number, page?: number): Observable<Product[]> {
+    let path = `${this.endPoint}${config.product}/${idCategory}`;
 
-    if(size) {
+    /*if(size) {
       path = `${path}&size=${size}`
-    }
+    }*/
     if(page) {
-      path = `${path}&size=${page}`
+      path = `${path}&page=${page}`
     }
     if(orderField) {
-      path = `${path}&size=${orderField}`
+      path = `${path}&orderField=${orderField}`
     }
 
     const header: HttpHeaders = this.credentialsService.getHeaderToken();

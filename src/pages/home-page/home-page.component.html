@@ -1,17 +1,15 @@
-<div class="content page-structure min-height-page">
+<div class="content page-structure min-height-page" *ngIf="!showSpinner">
   <div class="container-cards">
-    <!--<div *ngFor="let category of categoryService.getCategories() | async" class="category-section">
+    <div *ngFor="let category of categories; let i = index" class="category-section">
       <div class="title">{{ category.title }}</div>
-      <div class="card" *ngFor="let product of productService.getProducts(category.id, null, 8, null) | async">
-        <product-card [product]="product"></product-card>
+      <div class="card" *ngFor="let product of products[i]">
+        <product-card [product]="product" (click)="goToProduct(product)"></product-card>
       </div>
-    </div>-->
-    <div class="card"><!-- Let card of cards...-->
-      <product-card [product]="products[0]" (click)="goToProduct(products[0])"></product-card>
-    </div>
-    <div class="card"><!-- Let card of cards...-->
-      <product-card [product]="products[1]" (click)="goToProduct(products[1])"></product-card>
+      <span class="no-products" *ngIf="products[i] && products[i].length === 0"> Products coming soon!</span>
     </div>
   </div>
+</div>
+<div class="container-spinner page-structure min-height-page" *ngIf="showSpinner">
+    <mat-spinner [diameter]="100" [strokeWidth]="10"></mat-spinner>
 </div>
 <app-footer></app-footer>

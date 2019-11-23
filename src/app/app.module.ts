@@ -13,7 +13,8 @@ import { MatInputModule,
    MatIconModule, 
    MatMenuModule, 
    MatButtonModule,
-   MatExpansionModule
+   MatExpansionModule,
+   MatProgressSpinnerModule
   } from '@angular/material';
 
 import { HeaderDesktopComponent } from '../shared/components/header-desktop/header-desktop.component';
@@ -79,7 +80,8 @@ export class MaterialModule { }
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     /**
