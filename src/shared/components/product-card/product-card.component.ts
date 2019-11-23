@@ -15,7 +15,7 @@ export class ProductCardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    console.log(this.product);
+    //console.log(this.product);
   }
 
   private goToProduct(): void {

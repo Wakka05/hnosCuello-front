@@ -80,33 +80,30 @@
                     cursor: pointer;
                 }
     
-                form {
-    
-                    ::ng-deep mat-form-field {
-                        width: 40px;
+                ::ng-deep mat-form-field {
+                    width: 40px;
+                    height: 38px;
+                    border: 1px solid black;
+
+                    .mat-form-field-wrapper {
                         height: 38px;
-                        border: 1px solid black;
-    
-                        .mat-form-field-wrapper {
-                            height: 38px;
-                        }
-    
-                        .mat-form-field-underline {
-                            display: none;
-                        }
-    
-                        .mat-form-field-infix {
-                            //border-top: 1px solid black;
-                            display: flex;
-                            justify-items: center;
-                            padding-top: 0;
-                            padding-bottom: 0;
-                            border: 0;
-                            height: 38px;
-    
-                            .mat-input-element {
-                                text-align: center;
-                            }
+                    }
+
+                    .mat-form-field-underline {
+                        display: none;
+                    }
+
+                    .mat-form-field-infix {
+                        //border-top: 1px solid black;
+                        display: flex;
+                        justify-items: center;
+                        padding-top: 0;
+                        padding-bottom: 0;
+                        border: 0;
+                        height: 38px;
+
+                        .mat-input-element {
+                            text-align: center;
                         }
                     }
                 }
@@ -141,6 +138,15 @@
             }
         }   
     }
+}
+.container-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    
+    ::ng-deep mat-spinner {
+        svg circle {
+            stroke: #808080;
+        }
+    }
 }

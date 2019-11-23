@@ -17,9 +17,18 @@
 
     .summary {
         .title-card {
+            height: 30px;
+            margin: 0 auto;
+            max-width: 80%;
             display: flex;
             align-content: center;
             justify-content: center;
+
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
         }
 
         .price-card {
