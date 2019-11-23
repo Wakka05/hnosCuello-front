@@ -23,11 +23,11 @@ export class ProductService {
   }
 
   public getProducts(idCategory: string, orderField?: string, size?: number, page?: number): Observable<Product[]> {
-    let path = `${this.endPoint}${config.product}/${idCategory}`;
+    let path = `${this.endPoint}${config.product}?idCategory=${idCategory}`;
 
-    /*if(size) {
+    if(size) {
       path = `${path}&size=${size}`
-    }*/
+    }
     if(page) {
       path = `${path}&page=${page}`
     }

@@ -1,3 +1,5 @@
+@import '../../styles/colors.less';
+
 .content {
     //display: flex;
     flex: 3;
@@ -6,8 +8,12 @@
 
         .category-section {
 
-            .title {
+            margin-top: 10px;
+            margin-bottom: 20px;
 
+            .title {
+                font-size: 36px;
+                color: @almond-toast;
             }
 
             .card {
@@ -38,7 +44,9 @@
             }
 
             .no-products {
-                font-size: 36px;
+                font-size: 30px;
+                margin-left: 50px;
+                color: gray;
             }
         }
     }

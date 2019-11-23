@@ -5,7 +5,7 @@
       <div class="card" *ngFor="let product of products[i]">
         <product-card [product]="product" (click)="goToProduct(product)"></product-card>
       </div>
-      <span class="no-products" *ngIf="products[i] && products[i].length === 0"> Products coming soon!</span>
+      <span class="no-products" *ngIf="products[i] && products[i].length === 0"> New products coming soon!</span>
     </div>
   </div>
 </div>
