@@ -20,4 +20,8 @@ export class AppComponent {
   onActivate(event): void {
     window.scroll(0, 0);
   }
+
+  logout(event): void {
+    
+  }
 }

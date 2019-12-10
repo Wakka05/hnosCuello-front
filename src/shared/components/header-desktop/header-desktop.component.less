@@ -148,6 +148,38 @@
                 right: 0;
                 position: fixed;
             }
+
+            .login-menu {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+
+            .button,
+            .mat-flat-button.mat-primary {
+                cursor: pointer;
+                color: white;
+                background-color: orange;
+                box-shadow: 0.2px 4px 0 rgba(0, 0, 0, 0.14);
+                text-transform: uppercase;
+                text-align: center;
+                justify-content: center;
+                font-weight: bold;
+                height: @button-medium;
+                border-radius: 10px;
+                &[disabled] {
+                    color: white !important;
+                    background-color: #dbdbdb !important;
+                    cursor: default;
+                }
+
+                ::ng-deep .mat-button-wrapper {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+            }
         }
     
         ::ng-deep .cdk-overlay-backdrop 

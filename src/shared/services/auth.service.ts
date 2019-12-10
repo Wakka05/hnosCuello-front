@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CredentialsService } from './credentials.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map, share } from 'rxjs/operators';
+import { map, share, flatMap } from 'rxjs/operators';
 
 import { User } from '../models/user';
 import { config, USER_STORAGE_NAME } from './config';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/flatMap';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +72,23 @@ constructor(private http: HttpClient, private credentialsService: CredentialsSer
    }
  }
 
+ public login(data: any): Observable<any> {
+  const path: string = `${this.endPoint}${config.login}`;
+  const user: string = btoa(`${data.user}:${data.pass}`);
+  const header: HttpHeaders = new HttpHeaders({
+    Authorization: `Basic ${user}`
+  });
+
+  return this.http.post<any>(path, {}, { headers: header, observe: 'response' })
+    .pipe(
+      flatMap(res => {
+        this.credentialsService.saveToken(res.headers);
+        this.credentialsService.isLogged.next(true);
+        this.userObs = null;
+        return this.getUser();
+      })
+    );
+ }
  /**
   * Hacer funciones isViewOnly... isAdmin... etc en este servicio
   */

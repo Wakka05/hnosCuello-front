@@ -9,32 +9,37 @@
     </div>
     <div class="right-content">
       <!-- User menu -->
-      <div class="menu-button-user">
-        <button mat-button [matMenuTriggerFor]="menuUser" (menuOpened)="isOpened()" (menuClosed)="isClosed">
-          <div class="profile">
-            <div class="name">User name</div>
-            <div class="user-image">
-              <img alt="" *ngIf="user?.picture" [src]="user.picture.content | base64"/>
-              <div *ngIf="!user?.picture" class="user-icon"></div>
+      <ng-container *ngIf="user">
+        <div class="menu-button-user">
+          <button mat-button [matMenuTriggerFor]="menuUser" (menuOpened)="isOpened()" (menuClosed)="isClosed">
+            <div class="profile">
+              <div class="name">User name</div>
+              <div class="user-image">
+                <!--<img alt="" *ngIf="user?.picture" [src]="user.picture.content | base64"/>-->
+                <div *ngIf="!user?.picture" class="user-icon"></div>
+              </div>
+              <span class="fa fa-angle-down"></span>
             </div>
-            <span class="fa fa-angle-down"></span>
-          </div>
-        </button>
-      </div>
-      <mat-menu #menuUser="matMenu" class="menu-user">
-        <button mat-menu-item>User profile</button>
-        <button mat-menu-item>Prueba 1</button>
-        <button mat-menu-item>Prueba 1</button>
-        <button mat-menu-item (click)="logout()" style="height: 44px; border-top: 1px solid lightgray;">Log out
-          <span class="image"></span>
-        </button>
-      </mat-menu>
+          </button>
+        </div>
+        <mat-menu #menuUser="matMenu" class="menu-user">
+          <!--<button mat-menu-item (click)="goUserProfile()">User profile</button>-->
+          <button mat-menu-item>Administración</button>
+          <button mat-menu-item (click)="logout()" style="height: 44px; border-top: 1px solid lightgray;">Log out
+            <span class="image"></span>
+          </button>
+        </mat-menu>
+      </ng-container>
+      <ng-container *ngIf="!user">
+        <div class="login-menu">
+          <button mat-button class="mat-flat-button mat-primary" (click)="registerUser()">Registrarse</button>
+          <button mat-button class="mat-flat-button mat-primary" style="margin-left: 10px; margin-right: 10px;" (click)="login()">Iniciar sesión</button>
+        </div>
+      </ng-container>
     </div>
   </div>
   <div class="bread-crumbs">
     <app-breadcrumb></app-breadcrumb>
-    <!--<span>Inicio > Pan</span>-->
   </div>
-  <!-- Con horno de leña, como debería ser-->
 </div>
 <div class="header-space"></div>

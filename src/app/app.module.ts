@@ -14,7 +14,8 @@ import { MatInputModule,
    MatMenuModule, 
    MatButtonModule,
    MatExpansionModule,
-   MatProgressSpinnerModule
+   MatProgressSpinnerModule,
+   MatDialogModule
   } from '@angular/material';
 
 import { HeaderDesktopComponent } from '../shared/components/header-desktop/header-desktop.component';
@@ -26,7 +27,10 @@ import { FooterComponent } from '../shared/components/footer/footer.component';
 import { RatingComponent } from '../shared/components/rating/rating.component';
 import { BreadcrumbComponent } from '../shared/components/breadcrumb/breadcrumb.component';
 import { ProductDetailComponent } from '../pages/product-detail/product-detail.component';
+import { UserProfileComponent } from '../pages/user-profile/user-profile.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ModalLoginComponent } from 'src/shared/components/modals/modal-login/modal-login.component';
+import { ModalRegisterUserComponent } from 'src/shared/components/modals/modal-register-user/modal-register-user.component';
 
 //Function to create the loader for translations
 export function createTranslateLoader(http: HttpClient) {
@@ -40,7 +44,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ],
   exports: [
     MatInputModule,
@@ -49,7 +54,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }
@@ -64,7 +70,10 @@ export class MaterialModule { }
     FooterComponent,
     RatingComponent,
     BreadcrumbComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    UserProfileComponent,
+    ModalLoginComponent,
+    ModalRegisterUserComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +104,10 @@ export class MaterialModule { }
      * }
      */
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ModalLoginComponent,
+    ModalRegisterUserComponent
+  ]
 })
 export class AppModule { }
