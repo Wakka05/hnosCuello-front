@@ -29,8 +29,8 @@ export class ModalLoginComponent implements OnInit {
 
   buildForm(): void {
     this.loginForm = this.formBuilder.group({
-      user: [null, Validators.required],
-      pass: [null, Validators.required]
+      email: [null, Validators.required],
+      password: [null, Validators.required]
     });
   }
 
@@ -38,12 +38,12 @@ export class ModalLoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.showSpinner = true;
       this.authService.login(this.loginForm.value).subscribe( val => {
+        this.showSpinner = false;
         this.error = false;
         this.close();
       }, err => {
         this.error = true;
         this.showSpinner = false;
-        console.log(err);
       })
     }
   }

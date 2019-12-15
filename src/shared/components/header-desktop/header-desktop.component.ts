@@ -5,6 +5,7 @@ import { ModalRegisterUserComponent } from '../modals/modal-register-user/modal-
 import { MatDialog } from "@angular/material";
 import { ModalLoginComponent } from '../modals/modal-login/modal-login.component';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
   selector: 'header-desktop',
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class HeaderDesktopComponent implements OnInit {
 
-  constructor(public router: Router, private dialog: MatDialog) {}
+  constructor(public router: Router, private dialog: MatDialog, private authService: AuthService) {}
 
   public user: User;
   private scroll: number;
@@ -35,7 +36,9 @@ export class HeaderDesktopComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.authService.user.subscribe( val => {
+      this.user = val;
+    });
   }
 
   isOpened(): void {
@@ -59,9 +62,21 @@ export class HeaderDesktopComponent implements OnInit {
   }
 
   registerUser(): void {
-    const dialogRef = this.dialog.open(ModalRegisterUserComponent, {
-      height: '400px',
-      width: '600px',
+    const obs = new Observable<any>(observer => {
+      const dialogRef = this.dialog.open(ModalRegisterUserComponent, {
+        data: {
+          observer: observer ? observer : null
+        },
+        height: '680px',
+        width: '500px',
+      });
+    });
+    obs.subscribe(val => {
+      if (val && val === 'signUp') {
+        // this.registerUser();
+      } else if (val && val === 'login') {
+        this.login();
+      }
     });
   }
 
@@ -81,7 +96,7 @@ export class HeaderDesktopComponent implements OnInit {
       if (val && val === 'signUp') {
         this.registerUser();
       } else if (val && val === 'logged') {
-
+        // this.login();
       }
     });
   }

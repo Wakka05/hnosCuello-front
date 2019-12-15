@@ -3,10 +3,14 @@ export const config = {
     logged: '/logged',
     product: '/products',
     category: '/categories',
-    login: '/login'
+    login: '/login',
+    register: '/register',
+    order: '/orders',
+    resource: '/resources',
+    upload: '/upload'
 } 
 
-export const TOKEN_STORAGE_NAME: string = 'token';
+export const TOKEN_STORAGE_NAME: string = 'hnos-token';
 /* 
 * Guardamos el token de usuario para tener la información de este sin tener que hacer llamadas extra a la BBDD cada vez que queramos
 * consultar algo

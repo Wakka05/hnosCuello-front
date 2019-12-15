@@ -1,6 +1,7 @@
 <div class="card" (click)="goToProduct()">
     <div class="img-card">
-      <img src="../../../assets/images/header_example.jpg" alt="">
+      <img *ngIf="!product?.idResource" src="../../../assets/images/header_example.jpg" alt="">
+      <img *ngIf="product?.idResource" src="{{ content }}" alt="">
     </div>
     <div class="summary">
       <div class="title-card">

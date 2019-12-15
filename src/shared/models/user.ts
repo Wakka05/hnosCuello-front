@@ -3,8 +3,9 @@ export interface User {
     _id: string;
     name: string;
     picture?: Picture;
-    roles: string[];
+    roles: string;
     email: string;
+    orders?: string[];
 }
 
 export interface Picture {

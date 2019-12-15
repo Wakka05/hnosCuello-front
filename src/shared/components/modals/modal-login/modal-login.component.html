@@ -1,35 +1,36 @@
 <div class="header">
-  <h1>Hola</h1>
-  <div class="icon-close" (click)="discardLogin()"></div>
+  <h1>¡Bienvenido!</h1>
+  <!--<div class="icon-close" (click)="discardLogin()"></div>-->
+  <mat-icon (click)="discardLogin()">clear</mat-icon>
 </div>
-<h2 class="subheader">Welcome</h2>
+<!--<h2 class="subheader">Bienvenido</h2>-->
 <div mat-dialog-content>
-  <p *ngIf="!data?.errorText" class="content-text">Enter details access</p>
-  <p *ngIf="data?.errorText" class="content-text">error not logged des</p>
+  <p *ngIf="!data?.errorText" class="content-text">Identifícate</p>
+  <!--<p *ngIf="data?.errorText" class="content-text">error not logged des</p>-->
   <form [formGroup]="loginForm" (keydown.enter)="$event.preventDefault(); login($event)">
-    <mat-form-field [floatLabel]="'always'" [ngClass]="{'empty': !loginForm.value.user}">
-      <mat-label>login-request-mail</mat-label>
-      <input matInput placeholder="login request mail placeholder" formControlName="user">
-      <mat-icon matSuffix>info</mat-icon>
-      <mat-error *ngIf="loginForm.controls.user.hasError('email') && !loginForm.controls.user.hasError('required')">login.errors.email</mat-error>
-      <mat-error *ngIf="loginForm.controls.user.hasError('required')">login.errors.email_required</mat-error>
+    <mat-form-field [floatLabel]="'always'" [ngClass]="{'empty': !loginForm.value.email}">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <!--<mat-icon matSuffix>info</mat-icon>-->
+      <mat-error *ngIf="loginForm.controls.email.hasError('email') && !loginForm.controls.email.hasError('required')">No es un email</mat-error>
+      <mat-error *ngIf="loginForm.controls.email.hasError('required')">El campo email es obligatorio</mat-error>
     </mat-form-field>
     
-    <mat-form-field class="last" [floatLabel]="'always'" [ngClass]="{'empty': !loginForm.value.pass }">
-      <mat-label>login.pass</mat-label>
-      <input matInput placeholder="login.pass" type="password" formControlName="pass">
-      <mat-icon matSuffix>info</mat-icon>
-      <mat-error *ngIf="loginForm.controls.pass.hasError('required')">
-        login.errors.password_required
+    <mat-form-field class="last" [floatLabel]="'always'" [ngClass]="{'empty': !loginForm.value.password }">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <!--<mat-icon matSuffix>info</mat-icon>-->
+      <mat-error *ngIf="loginForm.controls.password.hasError('required')">
+        El campo password es obligatorio
       </mat-error>
     </mat-form-field>
     <!--<div class="error" *ngIf="error" [innerHTML]="errorMessage"></div>-->
     <div class="content-spinner" *ngIf="showSpinner">
       <mat-spinner [diameter]="40"></mat-spinner>
     </div>
-    <button *ngIf="!showSpinner" mat-flat-button class="rounded" [disabled]="!loginForm?.valid" (click)="login($event)" cdkFocusInitial>login.title</button>
+    <button *ngIf="!showSpinner" mat-flat-button class="rounded" [disabled]="!loginForm?.valid" (click)="login($event)" cdkFocusInitial>Acceder</button>
     <div *ngIf="!showSpinner && !data?.errorText" class="footer-content">
-      <span>sign-up.request.access <a (click)="singUp()">sign-up.title</a></span>
+      <span>¿No tienes cuenta? <a (click)="signUp()">¡Registrate aquí!</a></span>
     </div>
 
   </form>

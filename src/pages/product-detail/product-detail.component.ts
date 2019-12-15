@@ -3,6 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ProductService } from 'src/shared/services/product.service';
 import { Product } from 'src/shared/models/product';
+import { OrderService } from 'src/shared/services/order.service';
+import { Order } from 'src/shared/models/order';
+import { AuthService } from 'src/shared/services/auth.service';
+import { User } from 'src/shared/models/user';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,12 +20,15 @@ export class ProductDetailComponent implements OnInit {
   public product: Product;
   protected quantityForm = new FormControl(1);
   public showSpinner: boolean;
+  private user: User;
 
   constructor(
     private router: Router, 
     private route: ActivatedRoute,
     private productService: ProductService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private orderService: OrderService,
+    private authService: AuthService
     ) { 
     this.categoryId = this.route.snapshot.paramMap.get('categoryID');
     if (this.route.children.length > 0) {
@@ -34,6 +41,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.user.subscribe( val => {
+      this.user = val;
+    });
   }
 
   private initData(): void {
@@ -51,6 +61,31 @@ export class ProductDetailComponent implements OnInit {
 
   public addProduct(event): void {
     this.quantityForm.setValue(this.quantityForm.value + 1);
+  }
+
+  public addOrder(): void {
+    const order: Order = {
+      product: this.product,
+      quantity: this.quantityForm.value
+    };
+    if (this.user) {
+      // if (this.user.orders && this.user.orders.length !== 0) {
+      //   this.orderService.updateOrder(this.user.idOrder, order).subscribe( val => {
+      //     console.log(val);
+      //   });
+      // } else {
+        this.orderService.addOrder(order).subscribe( newOrder => {
+          // val._id -> id del carrito
+          console.log(newOrder);
+          this.user.orders.push(newOrder._id);
+          this.authService.updateUser(this.user._id, this.user).subscribe( updated => {
+            console.log(updated);
+          });
+        });
+      // }
+    } else {
+      console.log('Modal de debes de registrarte antes');
+    }
   }
 
 }

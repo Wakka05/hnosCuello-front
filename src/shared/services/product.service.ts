@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { CredentialsService } from './credentials.service';
 import { Product } from '../models/product';
@@ -35,11 +35,11 @@ export class ProductService {
       path = `${path}&orderField=${orderField}`
     }
 
-    const header: HttpHeaders = this.credentialsService.getHeaderToken();
-    return this.http.get<any>(path, { headers: header, observe: 'response' })
+    // const header: HttpHeaders = this.credentialsService.getHeaderToken();
+    return this.http.get<any>(path, { observe: 'response' })
       .pipe(
         map(res => {
-        this.credentialsService.saveToken(res.headers);
+        // this.credentialsService.saveToken(res.headers);
         return res.body;
       }));
   }
@@ -47,11 +47,11 @@ export class ProductService {
   public getProduct(idProduct: string): Observable<Product> {
     let path = `${this.endPoint}${config.product}/${idProduct}`;
 
-    const header: HttpHeaders = this.credentialsService.getHeaderToken();
-    return this.http.get<Product>(path, { headers: header, observe: 'response' })
+    // const header: HttpHeaders = this.credentialsService.getHeaderToken();
+    return this.http.get<Product>(path, { observe: 'response' })
       .pipe(
         map(res => {
-        this.credentialsService.saveToken(res.headers);
+        // this.credentialsService.saveToken(res.headers);
         return res.body;
       }));
   }

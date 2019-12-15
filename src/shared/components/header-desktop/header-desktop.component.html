@@ -5,7 +5,7 @@
       <div class="image-header" (click)="goHome()"></div>
     </div>
     <div class="search">
-      <search-bar></search-bar>
+      <!--<search-bar></search-bar>-->
     </div>
     <div class="right-content">
       <!-- User menu -->
@@ -13,7 +13,7 @@
         <div class="menu-button-user">
           <button mat-button [matMenuTriggerFor]="menuUser" (menuOpened)="isOpened()" (menuClosed)="isClosed">
             <div class="profile">
-              <div class="name">User name</div>
+              <div class="name">{{ user.name }}</div>
               <div class="user-image">
                 <!--<img alt="" *ngIf="user?.picture" [src]="user.picture.content | base64"/>-->
                 <div *ngIf="!user?.picture" class="user-icon"></div>

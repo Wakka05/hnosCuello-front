@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { CategoryService } from 'src/shared/services/category.service';
+import { AuthService } from 'src/shared/services/auth.service';
+import { CredentialsService } from 'src/shared/services/credentials.service';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,12 @@ export class AppComponent {
 
   constructor(
     private translate: TranslateService,
-    private categoryService: CategoryService
+    private authService: AuthService,
+    private credentials: CredentialsService
   ) {
     this.translate.setDefaultLang('es');
     this.translate.use('es');
+    this.credentials.isLogged.subscribe();
   }
 
   onActivate(event): void {
@@ -22,6 +25,6 @@ export class AppComponent {
   }
 
   logout(event): void {
-    
+    this.authService.logout();
   }
 }
