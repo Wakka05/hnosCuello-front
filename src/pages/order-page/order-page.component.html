@@ -61,7 +61,7 @@
     </div>
     <div *ngIf="!user.order.isConfirmed" class="confirm-order">
       <div><span>Precio final: {{ finalPrice }} €</span></div>
-      <button class="mat-flat-button mat-primary" (click)="confirm()">Confirmar pedido</button>
+      <button *ngIf="userId === user._id" class="mat-flat-button mat-primary" (click)="confirm()">Confirmar pedido</button>
     </div>
     <div *ngIf="user.order.isConfirmed" class="confirm-order">
       <div><span>Pedido realizado.</span></div>
