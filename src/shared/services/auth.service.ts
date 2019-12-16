@@ -82,7 +82,6 @@ public updateUser(idUser: string, user: User): Observable<any> {
   return this.http.put<any>(path, user, { observe: 'response' })
   .pipe(
     map(res => {
-      console.log(res);
       this.user.next(res.body);
       return res.body;
     })
@@ -99,7 +98,6 @@ public updateUser(idUser: string, user: User): Observable<any> {
   return this.http.get<any>(path, { observe: 'response' })
   .pipe(
     map(res => {
-      console.log(res.body);
       return res.body;
     })
   );

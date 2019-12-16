@@ -55,15 +55,15 @@
           <span>{{ order.finalPrice }}€</span>
         </div>
         <div class="column remove">
-          <mat-icon style="cursor: pointer" (click)="removeOrder(order)">close</mat-icon>
+          <mat-icon *ngIf="!user.order.isConfirmed" style="cursor: pointer" (click)="removeOrder(order)">close</mat-icon>
         </div>
       </div>
     </div>
-    <div *ngIf="!isConfirmed" class="confirm-order">
+    <div *ngIf="!user.order.isConfirmed" class="confirm-order">
       <div><span>Precio final: {{ finalPrice }} €</span></div>
       <button class="mat-flat-button mat-primary" (click)="confirm()">Confirmar pedido</button>
     </div>
-    <div *ngIf="isConfirmed" class="confirm-order">
+    <div *ngIf="user.order.isConfirmed" class="confirm-order">
       <div><span>Pedido realizado.</span></div>
       <div><span>Precio final: {{ finalPrice }} €</span></div>
       </div>

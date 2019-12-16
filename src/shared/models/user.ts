@@ -6,10 +6,15 @@ export interface User {
     picture?: Picture;
     roles: string;
     email: string;
-    orders?: string[];
+    order?: Item;
 }
 
 export interface Picture {
-    _id: string;
-    content: string;
+  _id: string;
+  content: string;
+}
+
+export interface Item {
+  ticket: string[];
+  isConfirmed: boolean;
 }

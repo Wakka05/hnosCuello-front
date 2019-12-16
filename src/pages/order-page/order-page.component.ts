@@ -14,7 +14,7 @@ import { Order } from 'src/shared/models/order';
 export class OrderPageComponent implements OnInit {
 
   public showSpinner = false;
-  private user: User;
+  public user: User;
   public users: User[] = [];
   public userId: string;
   private ordersOrb: any[] = [];
@@ -34,7 +34,7 @@ export class OrderPageComponent implements OnInit {
     this.user = this.authService.user.getValue();
     this.userId = this.route.snapshot.paramMap.get('userID');
     if (this.userId) {
-      if (this.user && this.user.orders && this.user.orders.length !== 0) {
+      if (this.user && this.user.order.ticket && this.user.order.ticket.length !== 0) {
         this.initOrders();
       } else {
         this.showSpinner = false;
@@ -44,7 +44,7 @@ export class OrderPageComponent implements OnInit {
       // Get all users and all their orders
       this.authService.getUsers().subscribe( users => {
         users.forEach(user => {
-          if (user.orders && user.orders.length !== 0) {
+          if (user.order && user.order.ticket.length !== 0) {
             this.users.push(user);
           }
         });
@@ -54,7 +54,7 @@ export class OrderPageComponent implements OnInit {
   }
 
   private initOrders(): void {
-    this.user.orders.forEach( order => {
+    this.user.order.ticket.forEach( order => {
       if (order) {
         this.ordersOrb.push(this.orderService.getOrder(order));
       }
@@ -97,12 +97,12 @@ export class OrderPageComponent implements OnInit {
   }
 
   public removeOrder(order: Order): void {
-    const index = this.user.orders.findIndex(val => val === order._id);
-    this.user.orders.splice(index, 1);
+    const index = this.user.order.ticket.findIndex(val => val === order._id);
+    this.user.order.ticket.splice(index, 1);
     this.authService.updateUser(this.user._id, this.user).subscribe( val => {
       this.user = this.authService.getUser();
       this.orderService.deleteOrder(order._id).subscribe(deleted => {
-        if (this.user.orders && this.user.orders.length !== 0) {
+        if (this.user.order && this.user.order.ticket.length !== 0) {
           this.showSpinner = true;
           this.orders = [];
           this.initOrders();
@@ -113,7 +113,8 @@ export class OrderPageComponent implements OnInit {
   }
 
   public confirm(): void {
-    this.isConfirmed = true;
+    this.user.order.isConfirmed = true;
+    this.authService.updateUser(this.user._id, this.user).subscribe();
   }
 
 }

@@ -73,6 +73,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   public addOrder(): void {
+    this.showSpinner = true;
     let price = this.product.price.replace(',', '.');
     const priceAux = Math.round(+price * this.quantityForm.value * 100) / 100;
     price = priceAux.toString();
@@ -95,20 +96,17 @@ export class ProductDetailComponent implements OnInit {
       finalPrice: price
     };
     if (this.user) {
-      // if (this.user.orders && this.user.orders.length !== 0) {
-      //   this.orderService.updateOrder(this.user.idOrder, order).subscribe( val => {
-      //     console.log(val);
-      //   });
-      // } else {
         this.orderService.addOrder(order).subscribe( newOrder => {
-          // val._id -> id del carrito
-          if (!this.user.orders) {
-            this.user.orders = [];
+          if (!this.user.order.ticket) {
+            this.user.order.ticket = [];
           }
-          this.user.orders.push(newOrder._id);
-          console.log(this.user);
-          this.authService.updateUser(this.user._id, this.user).subscribe( updated => {
-            console.log(updated);
+
+          if (!this.user.order.isConfirmed) {
+            this.user.order.isConfirmed = false;
+          }
+          this.user.order.ticket.push(newOrder._id);
+          this.authService.updateUser(this.user._id, this.user).subscribe( val => {
+            this.showSpinner = false;
           });
         });
     } else {
