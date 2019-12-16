@@ -39,6 +39,7 @@
         <div class="column">
           <span>Precio</span>
         </div>
+        <div class="column remove"></div>
       </div>
       <div class="row orders" *ngFor="let order of orders; let i=index">
         <div class="column" style="padding-left:20px">
@@ -53,8 +54,19 @@
         <div class="column">
           <span>{{ order.finalPrice }}€</span>
         </div>
+        <div class="column remove">
+          <mat-icon style="cursor: pointer" (click)="removeOrder(order)">close</mat-icon>
+        </div>
       </div>
     </div>
+    <div *ngIf="!isConfirmed" class="confirm-order">
+      <div><span>Precio final: {{ finalPrice }} €</span></div>
+      <button class="mat-flat-button mat-primary" (click)="confirm()">Confirmar pedido</button>
+    </div>
+    <div *ngIf="isConfirmed" class="confirm-order">
+      <div><span>Pedido realizado.</span></div>
+      <div><span>Precio final: {{ finalPrice }} €</span></div>
+      </div>
   </div>
 <div class="container-spinner page-structure min-height-page" *ngIf="showSpinner">
     <mat-spinner [diameter]="100" [strokeWidth]="10"></mat-spinner>

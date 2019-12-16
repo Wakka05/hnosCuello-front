@@ -50,4 +50,14 @@ export class OrderService {
       })
     );
   }
+
+  public deleteOrder(idOrder: string): Observable<any> {
+    const path: string = `${this.endPoint}${config.order}/${idOrder}`;
+    return this.http.delete<any>(path, { observe: 'response' })
+    .pipe(
+      map(res => {
+        return res.body;
+      })
+    );
+  }
 }

@@ -89,6 +89,7 @@ export class ProductDetailComponent implements OnInit {
       price = priceFinal;
     }
     const order: Order = {
+      _id: null,
       product: this.product,
       quantity: this.quantityForm.value,
       finalPrice: price
