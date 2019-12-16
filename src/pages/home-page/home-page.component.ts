@@ -19,15 +19,15 @@ export class HomePage implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private productService: ProductService, 
-    private router: Router) { 
+    private productService: ProductService,
+    private router: Router) {
   }
 
   ngOnInit() {
     this.showSpinner = true;
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
-      let categoryData = [];
+      const categoryData = [];
       this.categories.forEach( category => {
         categoryData.push(this.productService.getProducts(category._id, null, 8, null));
       });

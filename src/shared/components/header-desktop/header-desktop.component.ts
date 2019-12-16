@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { ModalRegisterUserComponent } from '../modals/modal-register-user/modal-register-user.component';
-import { MatDialog } from "@angular/material";
+import { MatDialog } from '@angular/material';
 import { ModalLoginComponent } from '../modals/modal-login/modal-login.component';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/shared/services/auth.service';
@@ -38,7 +38,12 @@ export class HeaderDesktopComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe( val => {
       this.user = val;
-      console.log(this.user);
+    });
+    this.authService.openLoginModal.subscribe( val => {
+      if (val) {
+        this.login();
+        this.authService.openLoginModal.next(false);
+      }
     });
   }
 

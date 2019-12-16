@@ -19,10 +19,10 @@ constructor(private http: HttpClient, private credentialsService: CredentialsSer
   private router: Router) {
   this.logged();
   this.endPoint = this.configService.getConfig().API.END_POINT;
-  //this.getUser().subscribe();
  }
 
  public user: BehaviorSubject<User> = new BehaviorSubject(null);
+ public openLoginModal: BehaviorSubject<boolean> = new BehaviorSubject(null);
  private endPoint: string;
 
  private logged(): void {
@@ -32,7 +32,7 @@ constructor(private http: HttpClient, private credentialsService: CredentialsSer
      } else {
        this.user.next(jwt_decode(this.credentialsService.getToken()));
      }
-   })
+   });
  }
 
  public saveUser(user: User): void {
@@ -93,8 +93,16 @@ public updateUser(idUser: string, user: User): Observable<any> {
    this.credentialsService.deleteToken();
    this.router.navigateByUrl('/');
  }
- /**
-  * Hacer funciones isViewOnly... isAdmin... etc en este servicio
-  */
+
+ public getUsers(): Observable<User[]> {
+  const path: string = `${this.endPoint}${config.users}`;
+  return this.http.get<any>(path, { observe: 'response' })
+  .pipe(
+    map(res => {
+      console.log(res.body);
+      return res.body;
+    })
+  );
+ }
 
 }

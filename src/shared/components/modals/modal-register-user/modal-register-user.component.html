@@ -7,7 +7,7 @@
     <div mat-dialog-content>
     <p *ngIf="!data?.errorText" class="content-text">Registrate</p>
     <!--<p *ngIf="data?.errorText" class="content-text">error not logged des</p>-->
-    <form [formGroup]="loginForm" (keydown.enter)="$event.preventDefault(); login($event)">
+    <form [formGroup]="loginForm" (keydown.enter)="$event.preventDefault(); registerUser($event)">
         <mat-form-field [floatLabel]="'always'" [ngClass]="{'empty': !loginForm.value.user}">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email">
@@ -28,7 +28,7 @@
             <!--<mat-icon matSuffix>info</mat-icon>-->
             <mat-error *ngIf="loginForm.controls.surnames.hasError('required')">El campo apellidos es obligatorio</mat-error>
         </mat-form-field>
-        
+
         <mat-form-field class="last" [floatLabel]="'always'" [ngClass]="{'empty': !loginForm.value.password }">
             <mat-label>Password</mat-label>
             <input matInput type="password" formControlName="password">

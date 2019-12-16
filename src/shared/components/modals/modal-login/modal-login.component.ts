@@ -44,10 +44,10 @@ export class ModalLoginComponent implements OnInit {
       }, err => {
         this.error = true;
         this.showSpinner = false;
-      })
+      });
     }
   }
-  
+
   signUp(): void {
     if (this.data.observer) {
       this.data.observer.next('signUp');

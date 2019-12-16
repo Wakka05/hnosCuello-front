@@ -28,7 +28,6 @@ export class ProductDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private productService: ProductService,
-    private fb: FormBuilder,
     private orderService: OrderService,
     private authService: AuthService,
     private resourceService: ResourceService
@@ -74,9 +73,25 @@ export class ProductDetailComponent implements OnInit {
   }
 
   public addOrder(): void {
+    let price = this.product.price.replace(',', '.');
+    const priceAux = Math.round(+price * this.quantityForm.value * 100) / 100;
+    price = priceAux.toString();
+    // Resultado entero
+    if (!price.includes('.')) {
+      price = price + ',00';
+      // Resultado decimal
+    } else {
+      let priceFinal = price.replace('.', ',');
+      const priceSplit = priceFinal.split(',');
+      if (priceSplit[1].length === 1) {
+        priceFinal = priceFinal + '0';
+      }
+      price = priceFinal;
+    }
     const order: Order = {
       product: this.product,
-      quantity: this.quantityForm.value
+      quantity: this.quantityForm.value,
+      finalPrice: price
     };
     if (this.user) {
       // if (this.user.orders && this.user.orders.length !== 0) {
@@ -95,9 +110,8 @@ export class ProductDetailComponent implements OnInit {
             console.log(updated);
           });
         });
-      // }
     } else {
-      console.log('Modal de debes de registrarte antes');
+      this.authService.openLoginModal.next(true);
     }
   }
 }
