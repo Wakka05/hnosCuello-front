@@ -8,10 +8,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule,
-   MatFormFieldModule, 
-   MatAutocompleteModule, 
-   MatIconModule, 
-   MatMenuModule, 
+   MatFormFieldModule,
+   MatAutocompleteModule,
+   MatIconModule,
+   MatMenuModule,
    MatButtonModule,
    MatExpansionModule,
    MatProgressSpinnerModule,
@@ -22,6 +22,7 @@ import { HeaderDesktopComponent } from '../shared/components/header-desktop/head
 import { SearchBarComponent } from '../shared/components/search-bar/search-bar.component';
 import { HomePage } from '../pages/home-page/home-page.component';
 import { ProductCardComponent } from '../shared/components/product-card/product-card.component';
+import { OrderPageComponent } from '../pages/order-page/order-page.component';
 import { Base64Pipe } from '../shared/pipes/base64.pipe';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { RatingComponent } from '../shared/components/rating/rating.component';
@@ -66,6 +67,7 @@ export class MaterialModule { }
     SearchBarComponent,
     ProductCardComponent,
     HomePage,
+    OrderPageComponent,
     Base64Pipe,
     FooterComponent,
     RatingComponent,

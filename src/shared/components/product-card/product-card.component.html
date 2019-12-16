@@ -1,4 +1,4 @@
-<div class="card" (click)="goToProduct()">
+<div class="card">
     <div class="img-card">
       <img *ngIf="!product?.idResource" src="../../../assets/images/header_example.jpg" alt="">
       <img *ngIf="product?.idResource" src="{{ content }}" alt="">
@@ -11,16 +11,8 @@
         <span>{{ product.price }}</span>
         <span style="margin-left: 5px;">€</span>
       </div>
-      <!-- TODO: Esto es de component-detail
-        <div class="add-item-card">
-        <mat-icon>remove_circle</mat-icon>
-        <input id="article-quantity" type="text">
-        <mat-icon>add_circle</mat-icon>
-      </div>-->
       <div class="rating-card">
         <rating [valueRating]="3"></rating>
       </div>
-      <!--<button mat-button class="add-button">Añadir</button>-->
     </div>
   </div>
-  

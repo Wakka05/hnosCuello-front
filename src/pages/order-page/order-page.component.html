@@ -1,0 +1,7 @@
+<div class="content page-structure min-height-page" *ngIf="!showSpinner">
+
+</div>
+<div class="container-spinner page-structure min-height-page" *ngIf="showSpinner">
+    <mat-spinner [diameter]="100" [strokeWidth]="10"></mat-spinner>
+</div>
+<app-footer></app-footer>

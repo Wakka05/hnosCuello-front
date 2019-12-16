@@ -11,7 +11,7 @@
       <!-- User menu -->
       <ng-container *ngIf="user">
         <div class="menu-button-user">
-          <button mat-button [matMenuTriggerFor]="menuUser" (menuOpened)="isOpened()" (menuClosed)="isClosed">
+          <button mat-button [matMenuTriggerFor]="menuUser" (menuOpened)="isOpened()" (menuClosed)="isClosed()">
             <div class="profile">
               <div class="name">{{ user.name }}</div>
               <div class="user-image">
@@ -24,7 +24,8 @@
         </div>
         <mat-menu #menuUser="matMenu" class="menu-user">
           <!--<button mat-menu-item (click)="goUserProfile()">User profile</button>-->
-          <button mat-menu-item>Administración</button>
+          <button mat-menu-item *ngIf="user.roles && user.roles === 'U1'" (click)="goToOrders()">Pedidos</button>
+          <button mat-menu-item (click)="goToMyOrder()">Mi carrito</button>
           <button mat-menu-item (click)="logout()" style="height: 44px; border-top: 1px solid lightgray;">Log out
             <span class="image"></span>
           </button>

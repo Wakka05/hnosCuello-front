@@ -38,6 +38,7 @@ export class HeaderDesktopComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe( val => {
       this.user = val;
+      console.log(this.user);
     });
   }
 
@@ -45,7 +46,7 @@ export class HeaderDesktopComponent implements OnInit {
     this.menuOpen = true;
   }
 
-  isClose(): void {
+  isClosed(): void {
     this.menuOpen = false;
   }
 
@@ -91,7 +92,7 @@ export class HeaderDesktopComponent implements OnInit {
         disableClose: true
       });
     });
-    
+
     obs.subscribe(val => {
       if (val && val === 'signUp') {
         this.registerUser();
@@ -99,5 +100,13 @@ export class HeaderDesktopComponent implements OnInit {
         // this.login();
       }
     });
+  }
+
+  goToOrders(): void {
+    this.router.navigate(['orders']);
+  }
+
+  goToMyOrder(): void {
+    this.router.navigate(['orders', this.user._id]);
   }
 }

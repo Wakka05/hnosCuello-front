@@ -17,8 +17,18 @@ export class OrderService {
   constructor(
     private http: HttpClient,
     private configService: ConfigService
-  ) { 
+  ) {
     this.endPoint = this.configService.getConfig().API.END_POINT;
+  }
+
+  public getOrder(idOrder: string): Observable<Order> {
+    const path: string = `${this.endPoint}${config.order}/${idOrder}`;
+    return this.http.get<any>(path, { observe: 'response' })
+    .pipe(
+      map(res => {
+        return res.body;
+      })
+    );
   }
 
   public addOrder(order: Order): Observable<any> {

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../../models/product';
-import { ProductService } from '../../services/product.service';
 import { ResourceService } from 'src/shared/services/resource.service';
 
 @Component({
@@ -16,16 +15,11 @@ export class ProductCardComponent implements OnInit {
 
   constructor(private router: Router, private resourceService: ResourceService) { }
 
-  ngOnInit() {    
+  ngOnInit() {
     if (this.product.idResource) {
       this.resourceService.getResource(this.product.idResource).subscribe( val => {
         this.content = 'data:image/jpeg;base64,' + val.content;
       });
     }
   }
-
-  private goToProduct(): void {
-    //this.router.navigate(['category', this.product.idCategory, this.product.name]);
-  }
-
 }

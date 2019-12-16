@@ -1,7 +1,8 @@
 <div class="content page-structure min-height-page" *ngIf="!showSpinner">
   <div class="container-detail">
     <div class="main-image">
-      <img src="https://www.recetasderechupete.com/wp-content/uploads/2018/01/Pan-casero-f%C3%A1cil-525x360.jpg"/>
+      <img *ngIf="!product?.idResource" src="https://www.recetasderechupete.com/wp-content/uploads/2018/01/Pan-casero-f%C3%A1cil-525x360.jpg"/>
+      <img *ngIf="product?.idResource" src="{{ content }}"/>
     </div>
     <div class="right">
       <div class="features">
@@ -22,7 +23,7 @@
           </mat-form-field>
           <button (click)="addProduct($event)"><mat-icon>add</mat-icon></button>
         </div>
-        <div class="favorite-container" (click)="favorite($event)">
+        <div class="favorite-container">
           <mat-icon class="favorite">favorite</mat-icon>
           <span class="favorite-text"> Añadir a favoritos </span>
         </div>
@@ -30,7 +31,7 @@
       <div class="options">
         <button class="mat-flat-button mat-primary" (click)="addOrder()">Añadir al carrito</button>
       </div>
-    </div> 
+    </div>
   </div>
 </div>
 <div class="container-spinner page-structure min-height-page" *ngIf="showSpinner">

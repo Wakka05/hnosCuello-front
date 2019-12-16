@@ -43,7 +43,7 @@ constructor(private http: HttpClient, private credentialsService: CredentialsSer
 
   public getUser(): User {
     return this.user.getValue();
-  } 
+  }
 
  public getRoles(): string {
    if(this.user.getValue()) {
@@ -72,7 +72,7 @@ constructor(private http: HttpClient, private credentialsService: CredentialsSer
   return this.http.post<any>(path, data, { observe: 'response' })
   .pipe(
     map(res => {
-      return res;
+      return res.body;
     })
   );
  }
@@ -82,7 +82,9 @@ public updateUser(idUser: string, user: User): Observable<any> {
   return this.http.put<any>(path, user, { observe: 'response' })
   .pipe(
     map(res => {
-      return res;
+      console.log(res);
+      this.user.next(res.body);
+      return res.body;
     })
   );
 }
